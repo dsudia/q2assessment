@@ -12,14 +12,4 @@ router.get('/movie/new', function(req, res, next) {
   res.render('movies/new');
 });
 
-// Handle new movie form submission
-router.post('/movies', function(req, res, next) {
-  var movieData = req.body;
-  return knex('movies').insert({
-    director: ,
-    title: ,
-    rating: ,
-    description: });
-});
-
 module.exports = router;
