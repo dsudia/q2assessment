@@ -61,4 +61,13 @@ router.post('/movie/:id', function(req, res, next) {
   });
 });
 
+// delete movie
+router.post('/movie/delete/:id', function(req, res, next) {
+  var movieId = req.params.id;
+  return knex('movies').where('id', movieId).del()
+  .then(function() {
+    res.redirect('/movies');
+  });
+});
+
 module.exports = router;
