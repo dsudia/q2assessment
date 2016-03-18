@@ -28,11 +28,22 @@ router.post('/movies', function(req, res, next) {
   });
 });
 
+// show individual movie page
 router.get('/movie/:id', function(req, res, next) {
   var movieId = req.params.id;
   return knex('movies').where('id', movieId)
   .then(function(movie) {
     res.render('movies/show', {movie: movie[0]});
+  });
+});
+
+// show edit form for movie
+router.get('/movie/edit/:id', function(req, res, next) {
+  var movieId = req.params.id;
+  return knex('movies').where('id', movieId)
+  .then(function(movie) {
+    console.log(movie);
+    res.render('movies/edit', {movie: movie[0]});
   });
 });
 
