@@ -28,4 +28,12 @@ router.post('/movies', function(req, res, next) {
   });
 });
 
+router.get('/movie/:id', function(req, res, next) {
+  var movieId = req.params.id;
+  return knex('movies').where('id', movieId)
+  .then(function(movie) {
+    res.render('movies/show', {movie: movie[0]});
+  });
+});
+
 module.exports = router;
