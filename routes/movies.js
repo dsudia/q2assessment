@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var knex = require('../db/knex');
 
 router.get('/movies', function(req, res, next) {
-  res.render('movies/index');
+  return knex('movies').select()
+  .then(function(movies) {
+    res.render('movies/index', {movies: movies});
+  });
 });
 
 // Handle new movie form submission
@@ -15,7 +19,7 @@ router.post('/movies', function(req, res, next) {
     description: movieData.description
   })
   .then(function() {
-    res.redirect('/');
+    res.redirect('/movies');
   });
 });
 
