@@ -47,4 +47,18 @@ router.get('/movie/edit/:id', function(req, res, next) {
   });
 });
 
+// update movie on edit form submission
+router.post('/movie/:id', function(req, res, next) {
+  var movieId = req.params.id;
+  var movieData = req.body;
+  return knex('movies').update({
+    director: movieData.director,
+    title: movieData.title,
+    rating: movieData.rating,
+    description: movieData.description
+  }).then(function() {
+    res.redirect('/movie/' + movieId);
+  });
+});
+
 module.exports = router;
