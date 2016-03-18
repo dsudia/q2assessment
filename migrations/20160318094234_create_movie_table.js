@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('director');
     table.string('title');
-    table.decimal('rating', 3, 1);
+    table.integer('rating');
     table.string('description', 1000);
   });
 };
