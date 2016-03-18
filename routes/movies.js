@@ -9,6 +9,11 @@ router.get('/movies', function(req, res, next) {
   });
 });
 
+// GET new movie form
+router.get('/movie/new', function(req, res, next) {
+  res.render('movies/new');
+});
+
 // Handle new movie form submission
 router.post('/movies', function(req, res, next) {
   var movieData = req.body;
